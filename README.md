@@ -8,9 +8,9 @@ record some setup steps in ubuntu16.04
 * Tensorflow
 
 
-
-openai gym 
-env.render() -> `Error in `python': corrupted size vs. prev_size `
+# Some Problem
+## OpenAI Gym 
+env.render() -> `*** Error in python': corrupted size vs. prev_size ***`
 ```
 sudo apt-get install libtcmalloc-minimal4
 export LD_PRELOAD="/usr/lib/libtcmalloc_minimal.so.4"
