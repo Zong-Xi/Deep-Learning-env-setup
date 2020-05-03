@@ -130,8 +130,6 @@ the turtlebot is training, and can see the loss and episode in terminal, but the
  log file: /home/parkbj/.ros/log/043fb95e-c180-11e8-8ab1-7085c22a655c/spawn_turtlebot_model-2*.log
 ```
 
-<br>
-
 ### Solve 1-1
 There are no issues here, all the requested nodes with their parameters are correctly launched (and it's normal that the `spawn_turtlebot_model` process end once launched in case you were wondering).
 
