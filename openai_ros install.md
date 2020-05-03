@@ -3,11 +3,18 @@
 
 <br>
 
-install `openai_ros` and try [the tutorial](<http://wiki.ros.org/openai_ros/TurtleBot2%20with%20openai_ros>), not using ROS Development Studio(RDS)
+install `openai_ros` and try [tutorial 1](<http://wiki.ros.org/openai_ros/TurtleBot2%20with%20openai_ros>) and [tutorial 2](http://wiki.ros.org/openai_ros/Wam-V%20RobotX%20Challenge%20with%20openai_ros), not using ROS Development Studio(RDS)
 
 <br>
 
-## All step for doing this tutorial
+[Tutorial1](#tutorial1) <br>
+[Tutorial2](#tutorial2) <br>
+[Problem](#problem) 
+
+<br>
+
+# Tutorial1
+Q learning on Turtlebot2 simulation
 ### 1. Download [Turtlebot2Maze](https://bitbucket.org/theconstructcore/turtlebot/src/master/) pkg, and set branch
 ```
 cd ~/catkin_ws/src
@@ -52,14 +59,64 @@ catkin_make
 source devel/setup.bash
 ```
 
-5. Launch gym_constructure main.launch file in command terminal
+### 5. Launch gym_constructure main.launch file in command terminal
 ```
 roslaunch gym_construct main.launch
+roslaunch turtle2_ros_example start_training.launch
 ```
 
 <br>
 
-## Problem
+# Tutorial2
+Q learning on Wam-V RobotX
+### 1. Download [WAMV_Simulation](https://bitbucket.org/theconstructcore/vmrc/src/master/)
+in simulation_ws:
+```
+cd ~/simulation_ws/src
+git clone https://bitbucket.org/theconstructcore/vmrc.git
+cd ~/simulation_ws
+catkin_make
+```
+
+### 2. Download [spawn_robot_tools](https://bitbucket.org/theconstructcore/spawn_robot_tools/src/master/)
+in simulation_ws:
+```
+cd ~/simulation_ws/src
+git clone https://bitbucket.org/theconstructcore/spawn_robot_tools.git
+cd ~/simulation_ws
+catkin_make
+```
+
+### 3. Download [openai_ros](https://bitbucket.org/theconstructcore/openai_ros/src/kinetic-devel/) pkg, and set branch
+```
+cd ~/catkin_ws/src
+git clone https://bitbucket.org/theconstructcore/openai_ros.git
+cd ~/catkin_ws/src/openai_ros
+git fetch && git checkout kinetic-devel
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+```
+
+### 4. Download [openai_examples_projects](https://bitbucket.org/theconstructcore/openai_examples_projects/src/master/) pkg, and set branch
+```
+cd ~/catkin_ws/src
+git clone https://bitbucket.org/theconstructcore/openai_examples_projects.git
+cd ~/catkin_ws/src/openai_examples_projects
+git fetch && git checkout tutorials
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+```
+
+### 5. Start training
+```
+roslaunch robotx_gazebo sandisland.launch
+roslaunch wamv_openai_ros_example start_training.launch
+```
+
+
+# Problem
 the turtlebot is training, and can see the loss and episode in terminal, but the gazebo simulation has not be loaded
 ```
  [ INFO] [1537961641.295151763, 0.348000000]: DiffDrive(ns = //): Advertise joint_states
