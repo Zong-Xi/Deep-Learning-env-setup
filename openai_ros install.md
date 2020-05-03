@@ -9,7 +9,7 @@ install `openai_ros` and try [tutorial 1](<http://wiki.ros.org/openai_ros/Turtle
 
 [Tutorial1](#tutorial1) <br>
 [Tutorial2](#tutorial2) <br>
-[Problem](#problem) 
+[Problem1-1](#problem1-1) 
 
 <br>
 
@@ -116,7 +116,7 @@ roslaunch wamv_openai_ros_example start_training.launch
 ```
 
 
-# Problem
+# Problem1-1
 the turtlebot is training, and can see the loss and episode in terminal, but the gazebo simulation has not be loaded
 ```
  [ INFO] [1537961641.295151763, 0.348000000]: DiffDrive(ns = //): Advertise joint_states
@@ -129,7 +129,7 @@ the turtlebot is training, and can see the loss and episode in terminal, but the
 
 <br>
 
-## Solve
+### Solve 1-1
 There are no issues here, all the requested nodes with their parameters are correctly launched (and it's normal that the `spawn_turtlebot_model` process end once launched in case you were wondering).
 
 "Nothing happen" because you don't launch the Gazebo GUI (ie. `gzclient`), in your nodes you simply have `gzserver`. Look at your `main.launch` :
@@ -155,6 +155,25 @@ Or if you don't want to modify the launch file, you can also run :
 roslaunch gym_construct main.launch gui:=true
 ```
 In addition : you have `<arg name="paused" value="true"/>`, eventhough you don't use the arg its default value is false (if you have to use it and it's set to true Gazebo will be started on a paused state)
+
+<br>
+
+# Problem1-2
+```
+timestep_limit=timestep_limit_per_episode, 
+File "/usr/local/lib/python2.7/dist-packages/gym/envs/registration.py", line 153, in register
+return registry.register(id, **kwargs) 
+File "/usr/local/lib/python2.7/dist-packages/gym/envs/registration.py", line 147, in register 
+self.env_specs[id] = EnvSpec(id, *kwargs) 
+TypeError: init() got an unexpected keyword argument 'timestep_limit' 
+```
+### Solve 1-2
+- because new version of `gym` doesn't have `timestep_limit`, instead, it become `max_episode_steps`
+rename the "timestep_limit" in `catkin_ws/src/openai_ros/openai_ros/src/openai_ros/task_envs/turtlebot2/turtlebot2_maze.py` to `max_episode_steps`
+
+
+
+
 
 ## Reference
 ROS Answer:
