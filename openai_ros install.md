@@ -9,7 +9,9 @@ install `openai_ros` and try [tutorial 1](<http://wiki.ros.org/openai_ros/Turtle
 
 [Tutorial1](#tutorial1) <br>
 [Tutorial2](#tutorial2) <br>
-[Problem1-1](#problem1-1) 
+[Problem1-1](#problem1-1) <br>
+[Problem1-2](#problem1-2) <br>
+[Problem2-1](#problem2-1) 
 
 <br>
 
@@ -115,6 +117,7 @@ roslaunch robotx_gazebo sandisland.launch
 roslaunch wamv_openai_ros_example start_training.launch
 ```
 
+<br>
 
 # Problem1-1
 the turtlebot is training, and can see the loss and episode in terminal, but the gazebo simulation has not be loaded
@@ -171,10 +174,25 @@ TypeError: init() got an unexpected keyword argument 'timestep_limit'
 - because new version of `gym` doesn't have `timestep_limit`, instead, it become `max_episode_steps`
 rename the "timestep_limit" in `catkin_ws/src/openai_ros/openai_ros/src/openai_ros/task_envs/turtlebot2/turtlebot2_maze.py` to `max_episode_steps`
 
+<br>
 
+# Problem2-1
+in `~/catkin_ws/src/openai_examples_projects/wamv_openai_ros_example/launch/start_training.launch`
+```launch
+<launch>
+    <!-- Spawn Buoys -->
+    <include file="$(find wamv_openai_ros_example)/launch/spawn_task_buoys.launch"/>
+    <!-- This version uses the openai_ros environments -->
+    <rosparam command="load" file="$(find wamv_openai_ros_example)/config/vmrc_openai_qlearn_params.yaml" />
+    <!-- Launch the training system -->
+    <node pkg="wamv_openai_ros_example" name="vmrc_nav_twosets_buoys_qlearn" type="start_qlearning.py" output="screen"/>
+</launch>
+```
+remember to change the "rosparam command="load" file="$(find `rospack`)" to the correct `rospkg_name`(depend on your seeting)
 
-
+<br>
 
 ## Reference
-ROS Answer:
 - [openai_ros example in local computer does not work](https://answers.ros.org/question/304330/openai_ros-example-in-local-computer-does-not-work/)
+- [Use OpenAI_ROS with WAM-V Step-by-Step](https://www.theconstructsim.com/ros-projects-use-openai_ros-wam-v-step-step/)
+- [Openai_ros openai_examples_projects q-learning example issue](https://answers.ros.org/question/325551/openai_ros-openai_examples_projects-q-learning-example-issue/)
