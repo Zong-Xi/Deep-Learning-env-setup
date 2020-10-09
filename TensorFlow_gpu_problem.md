@@ -44,3 +44,4 @@ This is probably because cuDNN failed to initialize, so try looking to see if a 
 
 ## Reference
 [github Issue](<https://github.com/tensorflow/tensorflow/issues/24496>)
+[chinese reference](<https://mc.ai/%E4%BD%BF%E7%94%A8tensorflow-gpu-%E8%A8%93%E7%B7%B4keras%E7%84%A1%E6%B3%95%E5%95%9F%E7%94%A8cudnn%E7%9A%84%E5%95%8F%E9%A1%8C/>)
