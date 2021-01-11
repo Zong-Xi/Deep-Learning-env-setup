@@ -38,10 +38,11 @@ TypeError: __init__() got an unexpected keyword argument 'encoding'
 ```
 
 ### Solve
-`pip uninstall airsim`
-`pip uninstall msgpack`
-`pip uninstall msgpack-python`
-`pip uninstall msgpack-rpc-python`
+`pip uninstall airsim` <br>
+`pip uninstall msgpack` <br>
+`pip uninstall msgpack-python` <br>
+`pip uninstall msgpack-rpc-python` <br> 
 then follow the [docs](https://microsoft.github.io/AirSim/apis/) and reinstall the `airsim` and `msgpack-rpc-python` packages
 
 ### Reference
+[reference](https://github.com/microsoft/AirSim/issues/3251)
