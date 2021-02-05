@@ -9,6 +9,7 @@
   - windows: (default) C:\Users\user_name\Documents\AirSim\settings.json)
   - ubuntu: (default) ~/Documents/AirSim/settings.json
   - if the setting file didn't exit in ubuntu folder, just create it 
+- also need to change the host ip in `airsim_node.launch` file
   
 ## Build Tutorial and Setting Reference
 - [tutorial](<https://microsoft.github.io/AirSim/airsim_ros_pkgs/>)
